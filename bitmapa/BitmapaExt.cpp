@@ -14,11 +14,11 @@ BitmapaExt::BitmapaExt(unsigned wysokosc, unsigned szerokosc) : _wysokosc{wysoko
             {
                 mapa[i][j].sasiedzi.push_back(&mapa[i][j - 1].wartosc); //połącz z lewym sąsiadem
             }
-            if(i != szerokosc - 1) //jeżeli nie leży na dolnym brzegu bitmapy
+            if(i != wysokosc - 1) //jeżeli nie leży na dolnym brzegu bitmapy
             {
                 mapa[i][j].sasiedzi.push_back(&mapa[i + 1][j].wartosc); //połącz z dolnym sąsiadem
             }
-            if(j != wysokosc - 1) //jeżeli nie leży na prawym brzegu bitmapy
+            if(j != szerokosc - 1) //jeżeli nie leży na prawym brzegu bitmapy
             {
                 mapa[i][j].sasiedzi.push_back(&mapa[i][j + 1].wartosc); //połącz z prawym sąsiadem
             }
