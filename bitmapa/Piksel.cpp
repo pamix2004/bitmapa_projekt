@@ -22,3 +22,16 @@ int Piksel::iloscSasiednichCzarnychPikseli()
     }
     return ilosc;
 }
+
+int Piksel::iloscSasiednichBialychPikseli()
+{
+    int ilosc{};
+    for (int i = 0; i < sasiedzi.size(); i++)
+    {
+        if(*sasiedzi[i] == 0)
+        {
+            ilosc++;
+        }
+    }
+    return ilosc;
+}

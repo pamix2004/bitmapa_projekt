@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BitmapaExt.h"
 #include "Dylatacja.h"
+#include "Erozja.h"
 int main()
 {
     BitmapaExt bitmapa(3, 5);
@@ -13,7 +14,10 @@ int main()
     //    std::cout << *i << " ";
     //}
     Dylatacja dyl;
+    Erozja er;
     dyl.przeksztalc(bitmapa);
+    std::cout << "\n" << bitmapa;
+    er.przeksztalc(bitmapa);
     std::cout << "\n" << bitmapa;
     return 0;
 }
