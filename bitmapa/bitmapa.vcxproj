@@ -127,7 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bitmapa.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BitmapaExt.cpp" />
+    <ClCompile Include="C_Bitmapa.cpp" />
+    <ClCompile Include="Dylatacja.cpp" />
+    <ClCompile Include="Erozja.cpp" />
+    <ClCompile Include="Inwersja.cpp" />
+    <ClCompile Include="Piksel.cpp" />
+    <ClCompile Include="Przeksztalcenie.cpp" />
+    <ClCompile Include="Usrednianie.cpp" />
+    <ClCompile Include="Zerowanie.cpp" />
+    <ClCompile Include="ZlozeniePrzeksztalcen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BitmapaExt.h" />
+    <ClInclude Include="C_Bitmapa.h" />
+    <ClInclude Include="Dylatacja.h" />
+    <ClInclude Include="Erozja.h" />
+    <ClInclude Include="Inwersja.h" />
+    <ClInclude Include="Piksel.h" />
+    <ClInclude Include="Przeksztalcenie.h" />
+    <ClInclude Include="Usrednianie.h" />
+    <ClInclude Include="Zerowanie.h" />
+    <ClInclude Include="ZlozeniePrzeksztalcen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

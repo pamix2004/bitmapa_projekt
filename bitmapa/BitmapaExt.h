@@ -14,7 +14,8 @@ public:
     virtual bool& operator() (unsigned x, unsigned y) override;
     virtual bool operator() (unsigned x, unsigned y) const override;
     friend std::ostream& operator<<(std::ostream& out, BitmapaExt bitMapa);
-        std::vector<std::vector<Piksel>> mapa;
+    //Wewnętrzna tablica przechowująca wygląd tablicy
+    std::vector<std::vector<Piksel>> mapa;
 
 private:
     unsigned _szerokosc;
