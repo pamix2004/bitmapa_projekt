@@ -1,7 +1,24 @@
 #include "BitmapaExt.h"
-
-BitmapaExt::BitmapaExt(unsigned wysokosc, unsigned szerokosc) : _wysokosc{wysokosc}, _szerokosc{szerokosc}, mapa{wysokosc, std::vector<Piksel>(szerokosc, Piksel())}
+#include "Blad_Rozmiaru.h"
+#include "Blad_Poza_Zakresem.h"
+BitmapaExt::BitmapaExt(unsigned wysokosc, unsigned szerokosc) : _wysokosc{wysokosc}, _szerokosc{szerokosc}
 {
+    try
+    {
+        const int MAX_SIZE = 65535; //16bit
+        if(_wysokosc >=  MAX_SIZE or _szerokosc >= MAX_SIZE or _wysokosc ==  0 || _szerokosc == 0)
+        {
+            Blad_Rozmiaru e;
+            throw e;
+        }
+        mapa = std::vector<std::vector<Piksel>>(_wysokosc, std::vector<Piksel>(_szerokosc, Piksel()));
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        exit(-1); //zakoncz program
+    }
+    
     for(int i = 0; i < wysokosc; i++)
     {
         for(int j = 0; j < szerokosc; j++)
@@ -43,11 +60,39 @@ unsigned BitmapaExt::width() const
 
 bool& BitmapaExt::operator() (unsigned x, unsigned y)
 {
+    try
+    {
+        Blad_Poza_Zakresem e;
+        if(x >= _wysokosc or y >= _szerokosc)
+        {
+            throw e;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        exit(-1);
+    }
+    
     return mapa[x][y].wartosc;
 }
 
 bool BitmapaExt::operator() (unsigned x, unsigned y) const
 {
+        try
+    {
+        Blad_Poza_Zakresem e;
+        if(x >= _wysokosc or y >= _szerokosc)
+        {
+            throw e;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        exit(-1);
+    }
+    
     return mapa[x][y].wartosc;
 }
 

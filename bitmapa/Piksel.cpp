@@ -1,4 +1,5 @@
 #include "Piksel.h"
+#include <iostream>
 
 Piksel::Piksel() : wartosc{0}
 {
@@ -9,7 +10,7 @@ Piksel::~Piksel()
 {
 
 }
-#include <iostream>
+
 int Piksel::iloscSasiednichCzarnychPikseli()
 {
     int ilosc{};
