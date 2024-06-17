@@ -2,7 +2,7 @@
 
 void Zerowanie::przeksztalc(BitmapaExt& bitmapa)
 {
-    for (std::vector<Piksel>& wiersz : bitmapa.mapa)
+    for (std::vector<Piksel>& wiersz : bitmapa.mapa) //dla każdego piksela
     {
         for (Piksel& komorka : wiersz)
         {

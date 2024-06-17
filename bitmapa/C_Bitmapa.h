@@ -1,6 +1,9 @@
 #ifndef C_BITMAPA_H
 #define C_BITMAPA_H
 
+/*
+Wirtualna klasa bazowa z podstawowymi metodami bitmapy
+*/
 class C_Bitmapa
 {
 public:

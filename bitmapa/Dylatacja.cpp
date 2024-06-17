@@ -11,8 +11,8 @@ Dylatacja::~Dylatacja()
 }
 void Dylatacja::przeksztalc(BitmapaExt& bitmapa)
 {
-    std::vector<bool*> doZamiany;
-    for(int i = 0; i < bitmapa.length(); i++)
+    std::vector<bool*> doZamiany; //lista pikseli wymagających zamiany
+    for(int i = 0; i < bitmapa.length(); i++) //przejdź przez całą bitmapę
     {
         for(int j = 0; j < bitmapa.width(); j++) //dla każdej komórki mapy
         {

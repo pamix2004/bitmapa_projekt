@@ -11,8 +11,8 @@ Usrednianie::~Usrednianie()
 }
 void Usrednianie::przeksztalc(BitmapaExt& bitmapa)
 {
-    std::vector<bool*> doZamiany;
-    for(int i = 0; i < bitmapa.length(); i++)
+    std::vector<bool*> doZamiany; //lista pikseli wymagających zamiany
+    for(int i = 0; i < bitmapa.length(); i++) //przejdź przez całą bitmapę
     {
         for(int j = 0; j < bitmapa.width(); j++) //dla każdej komórki mapy
         {
@@ -25,8 +25,6 @@ void Usrednianie::przeksztalc(BitmapaExt& bitmapa)
     for (int i = 0; i < doZamiany.size(); i++)
     {
         
-        *doZamiany[i] = (*doZamiany[i]) ? 0 : 1; //ustaw kolor piksela na przeciwny do obecnego
+        *doZamiany[i] = !(*doZamiany[i]); //ustaw kolor piksela na przeciwny do obecnego
     }
-    
-    
 }

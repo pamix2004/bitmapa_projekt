@@ -1,15 +1,24 @@
 #ifndef PIKSEL_H
 #define PIKSEL_H
 #include <vector>
+/*
+Klasa obsługująca pojedynczą komórkę bitmapy
+*/
 class Piksel
 {
 public:
     Piksel();
     ~Piksel();
-    int iloscSasiednichCzarnychPikseli(); //no clue jak nazwać metodę
-    int iloscSasiednichBialychPikseli(); //no clue jak nazwać metodę
-    std::vector<bool*> sasiedzi;
-    bool wartosc;
+    /*
+    Metoda zwraca ilość sąsiednich pikseli koloru czarnego
+    */
+    int iloscSasiednichCzarnychPikseli();
+    /*
+    Metoda zwraca ilość sąsiednich pikseli koloru czarnego
+    */
+    int iloscSasiednichBialychPikseli();
+    std::vector<bool*> sasiedzi; //wektor adresów komórek sąsiadów umożliwiający automatyczne aktualizowanie wartości komórek sąsiednich
+    bool wartosc; //kolor piksela 0 - biały, 1 - czarny
 private:
 };
 

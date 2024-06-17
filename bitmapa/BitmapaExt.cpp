@@ -5,13 +5,13 @@ BitmapaExt::BitmapaExt(unsigned wysokosc, unsigned szerokosc) : _wysokosc{wysoko
 {
     try
     {
-        const int MAX_SIZE = 65535; //16bit
-        if(_wysokosc >=  MAX_SIZE or _szerokosc >= MAX_SIZE or _wysokosc ==  0 || _szerokosc == 0)
+        const int MAX_SIZE = 65535; //16bit, ograniczenie wielkości, ponieważ gdyby użytkownik wprowadził liczbę ujemną, zmienna robi underflow w liczby bliskie limitu zmiennej
+        if(_wysokosc >=  MAX_SIZE or _szerokosc >= MAX_SIZE or _wysokosc ==  0 || _szerokosc == 0) //jeżeli wymiar bitapy jest równy 0 lub przekracza limit
         {
             Blad_Rozmiaru e;
-            throw e;
+            throw e; //rzuć błędem
         }
-        mapa = std::vector<std::vector<Piksel>>(_wysokosc, std::vector<Piksel>(_szerokosc, Piksel()));
+        mapa = std::vector<std::vector<Piksel>>(_wysokosc, std::vector<Piksel>(_szerokosc, Piksel())); //utwórz bitmapę
     }
     catch(const std::exception& e)
     {
@@ -19,7 +19,8 @@ BitmapaExt::BitmapaExt(unsigned wysokosc, unsigned szerokosc) : _wysokosc{wysoko
         exit(-1); //zakoncz program
     }
     
-    for(int i = 0; i < wysokosc; i++)
+    //uzupełnij wektor sąsiedztwa
+    for(int i = 0; i < wysokosc; i++) 
     {
         for(int j = 0; j < szerokosc; j++)
         {
@@ -62,16 +63,16 @@ bool& BitmapaExt::operator() (unsigned x, unsigned y)
 {
     try
     {
-        Blad_Poza_Zakresem e;
-        if(x >= _wysokosc or y >= _szerokosc)
+        if(x >= _wysokosc or y >= _szerokosc) //jeżeli podany index nie mależy do tablicy
         {
+            Blad_Poza_Zakresem e;
             throw e;
         }
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
-        exit(-1);
+        exit(-1); //zakoncz program
     }
     
     return mapa[x][y].wartosc;
@@ -79,18 +80,18 @@ bool& BitmapaExt::operator() (unsigned x, unsigned y)
 
 bool BitmapaExt::operator() (unsigned x, unsigned y) const
 {
-        try
+    try
     {
-        Blad_Poza_Zakresem e;
-        if(x >= _wysokosc or y >= _szerokosc)
+        if(x >= _wysokosc or y >= _szerokosc) //jeżeli podany index nie mależy do tablicy
         {
+            Blad_Poza_Zakresem e;
             throw e;
         }
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
-        exit(-1);
+        exit(-1); //zakoncz program
     }
     
     return mapa[x][y].wartosc;
@@ -98,13 +99,13 @@ bool BitmapaExt::operator() (unsigned x, unsigned y) const
 
 std::ostream& operator<<(std::ostream& out, BitmapaExt bitMapa)
 {
-    for (std::vector<Piksel> wiersz : bitMapa.mapa)
+    for (std::vector<Piksel> wiersz : bitMapa.mapa) //przejdź przez każdy element bitmapy
     {
         for (Piksel komorka : wiersz)
         {
-            out << komorka.wartosc << " ";
+            out << komorka.wartosc << " "; //zapisz go do wyjścia
         }
         out << "\n";
     }
-    return out;
+    return out; //zwróć strumień wyjściowy
 }
